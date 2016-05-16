@@ -18,11 +18,9 @@ function shieldman (service, opts) {
     return undefined
   }
 
-  if (!shieldTemplate.hasBranchVersion) {
-    delete opts.branch
-  }
+  const branch = shieldTemplate.hasBranchVersion ? opts.branch : null
 
-  const linkTemplate = opts.branch && shieldTemplate.branchLink || shieldTemplate.link
+  const linkTemplate = branch && shieldTemplate.branchLink || shieldTemplate.link
 
   return {
     text: shieldTemplate.text,
@@ -31,7 +29,7 @@ function shieldman (service, opts) {
   }
 
   function getShieldImage (imagePath) {
-    const branchSuffix = opts.branch && ('/' + opts.branch) || ''
+    const branchSuffix = branch && ('/' + branch) || ''
     return `https://img.shields.io/${format(imagePath, opts)}` +
       `${branchSuffix}.${ext}${opts.style ? `?style=${opts.style}` : ''}`
   }
