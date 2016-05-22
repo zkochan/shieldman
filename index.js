@@ -1,7 +1,7 @@
 'use strict'
 module.exports = shieldman
 
-const shieldsList = require('./lib/shields-list')
+var shieldsList = require('./lib/shields-list')
 
 function shieldman (service, opts) {
   if (!service) {
@@ -10,17 +10,17 @@ function shieldman (service, opts) {
 
   opts = opts || {}
 
-  const ext = opts.ext || 'svg'
+  var ext = opts.ext || 'svg'
 
-  const shieldTemplate = shieldsList[service.toLowerCase()]
+  var shieldTemplate = shieldsList[service.toLowerCase()]
 
   if (!shieldTemplate) {
     return undefined
   }
 
-  const branch = shieldTemplate.hasBranchVersion ? opts.branch : null
+  var branch = shieldTemplate.hasBranchVersion ? opts.branch : null
 
-  const linkTemplate = branch && shieldTemplate.branchLink || shieldTemplate.link
+  var linkTemplate = branch && shieldTemplate.branchLink || shieldTemplate.link
 
   return {
     text: shieldTemplate.text,
@@ -29,12 +29,12 @@ function shieldman (service, opts) {
   }
 
   function getShieldImage (imagePath) {
-    const branchSuffix = branch && ('/' + branch) || ''
-    return `https://img.shields.io/${format(imagePath, opts)}` +
-      `${branchSuffix}.${ext}${opts.style ? `?style=${opts.style}` : ''}`
+    var branchSuffix = branch && ('/' + branch) || ''
+    return 'https://img.shields.io/' + format(imagePath, opts) +
+      branchSuffix + '.' + ext + (opts.style ? '?style=' + opts.style : '')
   }
 }
 
 function format (str, params) {
-  return str.replace(/{([^{}]+)}/g, (str, match) => params[match])
+  return str.replace(/{([^{}]+)}/g, function (str, match) { return params[match] })
 }

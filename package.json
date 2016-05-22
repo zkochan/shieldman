@@ -13,7 +13,8 @@
     }
   },
   "scripts": {
-    "test": "mocha && npm run lint && mos test",
+    "test-es5": "mocha && npm run lint",
+    "test": "npm run test-es5 && mos test",
     "lint": "eslint lib/**/*.js index.js",
     "commit": "git-cz",
     "coverage": "istanbul cover -x \"**/*.spec.js\" node_modules/mocha/bin/_mocha -- -R spec",
@@ -57,7 +58,7 @@
     "validate-commit-msg": "^2.6.1"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=0.10"
   },
   "config": {
     "commitizen": {

@@ -1,13 +1,13 @@
 'use strict'
-const describe = require('mocha').describe
-const it = require('mocha').it
-const expect = require('chai').expect
+var describe = require('mocha').describe
+var it = require('mocha').it
+var expect = require('chai').expect
 
-const shieldman = require('.')
+var shieldman = require('./index')
 
-describe('shieldman', () => {
-  it('travis', () => {
-    const shield = shieldman('travis', {
+describe('shieldman', function () {
+  it('travis', function () {
+    var shield = shieldman('travis', {
       repo: 'zkochan/shieldman',
     })
     expect(shield).to.eql({
@@ -17,8 +17,8 @@ describe('shieldman', () => {
     })
   })
 
-  it('coveralls for branch', () => {
-    const shield = shieldman('coveralls', {
+  it('coveralls for branch', function () {
+    var shield = shieldman('coveralls', {
       repo: 'zkochan/shieldman',
       branch: 'dev',
     })
@@ -29,8 +29,8 @@ describe('shieldman', () => {
     })
   })
 
-  it('standard shield when branch shield not supported', () => {
-    const shield = shieldman('npm', {
+  it('standard shield when branch shield not supported', function () {
+    var shield = shieldman('npm', {
       npmName: 'shieldman',
       branch: 'dev',
     })
@@ -41,8 +41,8 @@ describe('shieldman', () => {
     })
   })
 
-  it('flat square styled travis', () => {
-    const shield = shieldman('travis', {
+  it('flat square styled travis', function () {
+    var shield = shieldman('travis', {
       style: 'flat-square',
       repo: 'zkochan/shieldman',
     })
@@ -53,8 +53,8 @@ describe('shieldman', () => {
     })
   })
 
-  it('gemnasium', () => {
-    const shield = shieldman('gemnasium', {
+  it('gemnasium', function () {
+    var shield = shieldman('gemnasium', {
       repo: 'zkochan/shieldman',
     })
     expect(shield).to.eql({
