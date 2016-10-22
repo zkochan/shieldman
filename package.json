@@ -10,7 +10,10 @@
   "mos": {
     "installation": {
       "useShortAlias": true
-    }
+    },
+    "plugins": [
+      "readme"
+    ]
   },
   "scripts": {
     "test-es5": "mocha && npm run lint",
@@ -54,6 +57,7 @@
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
     "mos": "^1.1.1",
+    "mos-plugin-readme": "^1.0.4",
     "semantic-release": "^4.3.5",
     "validate-commit-msg": "^2.6.1"
   },
