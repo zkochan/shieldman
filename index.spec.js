@@ -68,7 +68,7 @@ describe('shieldman', function () {
     var shield = shieldman('spacemacs')
     expect(shield).to.eql({
       text: 'Built with Spacemacs',
-      image: 'https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg',
+      image: 'https://raw.githubusercontent.com/syl20bnr/spacemacs/master/assets/spacemacs-badge.svg?sanitize=true',
       link: 'http://spacemacs.org',
     })
   })
