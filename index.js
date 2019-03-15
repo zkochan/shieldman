@@ -2,6 +2,7 @@
 module.exports = shieldman
 
 var shieldsList = require('./lib/shields-list')
+var customShieldsList = require('./lib/shield-custom.js')
 
 function shieldman (service, opts) {
   if (!service) {
@@ -12,7 +13,11 @@ function shieldman (service, opts) {
 
   var ext = opts.ext || 'svg'
 
-  var shieldTemplate = shieldsList[service.toLowerCase()]
+  var serviceName = service.toLowerCase()
+
+  var isNormalShield = serviceName in shieldsList
+
+  var shieldTemplate = isNormalShield ? shieldsList[serviceName] : customShieldsList[serviceName]
 
   if (!shieldTemplate) {
     return undefined
@@ -25,7 +30,7 @@ function shieldman (service, opts) {
   return {
     text: shieldTemplate.text,
     link: format(linkTemplate, opts),
-    image: getShieldImage(shieldTemplate.path),
+    image: isNormalShield ? getShieldImage(shieldTemplate.path) : shieldTemplate.path,
   }
 
   function getShieldImage (imagePath) {

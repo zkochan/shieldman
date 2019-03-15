@@ -63,4 +63,13 @@ describe('shieldman', function () {
       link: 'https://gemnasium.com/zkochan/shieldman',
     })
   })
+
+  it('spacemacs', function () {
+    var shield = shieldman('spacemacs')
+    expect(shield).to.eql({
+      text: 'Built with Spacemacs',
+      image: 'https://raw.githubusercontent.com/syl20bnr/spacemacs/master/assets/spacemacs-badge.svg?sanitize=true',
+      link: 'http://spacemacs.org',
+    })
+  })
 })
